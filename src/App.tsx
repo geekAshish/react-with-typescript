@@ -1,3 +1,4 @@
+import NewTodoForm from "./components/NewTodoForm"
 import Todos from "./components/Todos"
 import { todo } from "./models/todos"
 
@@ -8,9 +9,15 @@ function App() {
     new todo('Learn NextJS'),
   ]
 
+  const addTodoHandler = (text: string) => {
+    console.log(text);
+    
+  }
+
   return (
     <>
       <h1>Ashish Kushwaha</h1>
+      <NewTodoForm onTodoAdd={addTodoHandler}/>
       <Todos items={todoList} />
     </>
   )

@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 
 
-const NewTodoForm = () => {
+const NewTodoForm = ({onTodoAdd}: {onTodoAdd: (text: string) => void}) => {
   // we have to define, which type of element is going to use the ref, in this case it's input element, and initial value is null
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
@@ -10,13 +10,14 @@ const NewTodoForm = () => {
 
     // Logic
     // it'll automatic give us suggetions, which method you can call on this refferd html tag
-    const inputValue = todoTextInputRef.current?.value;
+    const inputValue = todoTextInputRef.current!.value;
+
     if(inputValue?.trim().length === 0) {
       // throw an error on the ui for better user experience
       return;
     }
 
-    
+    onTodoAdd(inputValue)
     
   }
 
