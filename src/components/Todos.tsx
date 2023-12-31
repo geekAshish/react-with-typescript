@@ -1,10 +1,12 @@
-const Todos = (props: {items: string[]}) => {
+import { todo } from "../models/todos"
+
+const Todos = (props: {items: todo[]}) => {
   return (
     <>
     <ul>
       {
-        props.items.map((item, i) => {
-          return <li key={i}>{item}</li>
+        props.items.map((item) => {
+          return <li key={item.id}>{item.text}</li>
         })
       }
     </ul>
