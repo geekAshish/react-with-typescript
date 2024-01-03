@@ -1,9 +1,9 @@
+import classes from '../components/TodosList.module.css'
 
 
-
-const TodosList = ({text}: {text: string}) => {
+const TodosList = ({text, onDeleteItem}: {text: string, onDeleteItem: () => void}) => {
   return (
-    <><li>{text}</li></>
+    <><li className={classes.item} onClick={onDeleteItem}>{text}</li></>
   )
 }
 

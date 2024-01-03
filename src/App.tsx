@@ -15,11 +15,17 @@ function App() {
 
   }
 
+  const deleteItemHandler = (id: string) => {
+    const newTodoList = todoList.filter((item) => item.id !== id)
+
+    setTodoList(newTodoList)
+  }
+
   return (
     <>
       <h1>Ashish Kushwaha</h1>
       <NewTodoForm onTodoAdd={addTodoHandler}/>
-      <Todos items={todoList} />
+      <Todos items={todoList} onDeleteItem={deleteItemHandler} />
     </>
   )
 }
