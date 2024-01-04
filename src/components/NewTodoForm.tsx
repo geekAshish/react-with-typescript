@@ -1,8 +1,10 @@
-import React, {useRef} from "react";
+import React, {useRef, useContext} from "react";
 import classes from '../components/NewTodoForm.module.css';
+import { TodoContext } from "../store/todo-context";
 
 
-const NewTodoForm = ({onTodoAdd}: {onTodoAdd: (text: string) => void}) => {
+const NewTodoForm = () => {
+  const todoCtx = useContext(TodoContext);
   // we have to define, which type of element is going to use the ref, in this case it's input element, and initial value is null
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
@@ -18,7 +20,7 @@ const NewTodoForm = ({onTodoAdd}: {onTodoAdd: (text: string) => void}) => {
       return;
     }
 
-    onTodoAdd(inputValue)
+    todoCtx.addTodo(inputValue)
 
     todoTextInputRef.current!.value = '';
     
